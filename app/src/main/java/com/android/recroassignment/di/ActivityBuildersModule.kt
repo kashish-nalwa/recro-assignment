@@ -1,15 +1,21 @@
 package com.android.recroassignment.di
 
-import com.android.recroassignment.di.main.MainModule
-import com.android.recroassignment.di.main.MainViewModelsModule
-import com.android.recroassignment.ui.MainActivity
+import com.android.recroassignment.di.articles.ArticlesModule
+import com.android.recroassignment.di.articles.ArticlesScope
+import com.android.recroassignment.di.articles.ArticlesViewModelsModule
+import com.android.recroassignment.ui.articles.ArticlesActivity
+import com.android.recroassignment.ui.articleDetails.ArticleDetailsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityBuildersModule {
+    @ArticlesScope
     @ContributesAndroidInjector(
-        modules = [MainModule::class, MainViewModelsModule::class]
+        modules = [ArticlesModule::class, ArticlesViewModelsModule::class]
     )
-    abstract fun contributesMainActivity(): MainActivity
+    abstract fun contributesMainActivity(): ArticlesActivity
+
+    @ContributesAndroidInjector
+    abstract fun contributesArticleDetailsActivity(): ArticleDetailsActivity
 }

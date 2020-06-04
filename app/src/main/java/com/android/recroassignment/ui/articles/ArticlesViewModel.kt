@@ -1,4 +1,4 @@
-package com.android.recroassignment.ui
+package com.android.recroassignment.ui.articles
 
 import android.util.Log
 import androidx.lifecycle.*
@@ -9,33 +9,35 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(private val repository: ArticlesRepository) :
+class ArticlesViewModel @Inject constructor(private val repository: ArticlesRepository) :
     ViewModel() {
 
-    private val newsResourceLiveData: MediatorLiveData<NewsResource<List<Article>>> =
+    private val newsResourceLiveData: MediatorLiveData<ArticlesResource<List<Article>>> =
         MediatorLiveData()
 
-    fun getNewsResourceLiveData(): LiveData<NewsResource<List<Article>>> {
+    fun getNewsResourceLiveData(): LiveData<ArticlesResource<List<Article>>> {
         return newsResourceLiveData
     }
 
     init {
         Log.e(TAG, "onCreate: " + "initialized")
-        /* 1. changing flow first it will check in db if data comes to zero,
-              then it will show loading and fetch from api then update db
-           2. if its reater than zero,
-              then it will show updating contents and make api hit and,
-              then new data will replace old one in db and refresh UI*/
-        newsResourceLiveData.value = NewsResource.Loading()
-        repository.fetchTopHeadlines()
-
+        newsResourceLiveData.value =
+            ArticlesResource.Loading(
+                arrayListOf(Article(-1))
+            )
+        fetchTopHeadlines()
         newsResourceLiveData.addSource(repository.getArticles(), Observer {
             if (it.size > 0) {
-                newsResourceLiveData.value = NewsResource.Success(it)
+                newsResourceLiveData.value =
+                    ArticlesResource.Success(it)
                 Log.e(TAG, "Articles from DB: " + it.size)
             }
             newsResourceLiveData.removeSource(repository.getArticles())
         })
+    }
+
+    fun fetchTopHeadlines() {
+        repository.fetchTopHeadlines()
         newsResourceLiveData.addSource(repository.getNewsLiveData(), Observer {
             Log.e(
                 TAG,
@@ -43,24 +45,25 @@ class MainViewModel @Inject constructor(private val repository: ArticlesReposito
             )
 
             if (it.status.equals(Constants.ERROR)) {
-
-                if (!(newsResourceLiveData.value is NewsResource.Success)) {
-                    newsResourceLiveData.value = NewsResource.Error(it.status)
-                }
+                newsResourceLiveData.value =
+                    ArticlesResource.Error(
+                        it.status,
+                        arrayListOf(Article(-1))
+                    )
+                /*if (!(newsResourceLiveData.value is ArticlesResource.Success)) {
+                    newsResourceLiveData.value =
+                        ArticlesResource.Error(
+                            it.status,
+                            arrayListOf(Article(-1))
+                        )
+                }*/
 
             } else {
                 insertArticles(it.articles)
             }
 
-            /* if (it.status.equals("Error") && !(newsResourceLiveData.value is NewsResource.Success)) {
-                 newsResourceLiveData.value = NewsResource.Error(it.status)
-             } else if (it.status.equals("Error") && (newsResourceLiveData.value is NewsResource.Success)) {
-             } else {
-                 insertArticles(it.articles)
-             }*/
             newsResourceLiveData.removeSource(repository.getNewsLiveData())
         })
-
     }
 
     fun insertArticles(articles: List<Article>) {
@@ -69,7 +72,6 @@ class MainViewModel @Inject constructor(private val repository: ArticlesReposito
             repository.insertArticles(articles)
         }
     }
-
 
     companion object {
         val TAG = "MainViewModel"

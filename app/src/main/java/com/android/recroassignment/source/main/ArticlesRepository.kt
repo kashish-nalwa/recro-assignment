@@ -28,40 +28,16 @@ class ArticlesRepository @Inject constructor(
 
     fun fetchTopHeadlines() {
         source = LiveDataReactiveStreams.fromPublisher(
-            mainApiInterface.getTopHeadlines(Constants.COUNTRY, Constants.API_KEY)
+            mainApiInterface.getTopHeadlines(Constants.COUNTRY, Constants.API_KEY, 100)
                 .onErrorReturn {
-                    return@onErrorReturn News(Constants.ERROR, 0, ArrayList<Article>())
+                    return@onErrorReturn News(
+                        Constants.ERROR,
+                        1,
+                        arrayListOf(Article(-1))
+                    )
                 }
                 .subscribeOn(Schedulers.io())
         )
-
-        /*mainApiInterface.getTopHeadlines(Constants.COUNTRY, Constants.API_KEY)
-            *//* .onErrorReturn {
-                 return@onErrorReturn News("Error", 0, ArrayList<Article>())
-             }*//*
-            .subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
-            .toObservable()
-            .subscribe(object : Observer<News> {
-                override fun onComplete() {
-                }
-
-                override fun onSubscribe(d: Disposable?) {
-                }
-
-                override fun onNext(value: News?) {
-                    value?.let {
-                        insertArticles(it.articles)
-                    }
-
-                }
-
-                override fun onError(e: Throwable?) {
-                    Log.e(TAG, "onError: " + e?.message)
-                }
-
-            })
-*/
 
     }
 

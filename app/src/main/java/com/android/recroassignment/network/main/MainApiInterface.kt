@@ -9,6 +9,7 @@ interface MainApiInterface {
     @GET("top-headlines")
     fun getTopHeadlines(
         @Query("country") country: String,
-        @Query("apiKey") apiKey: String
+        @Query("apiKey") apiKey: String,
+        @Query("pageSize") pageSize: Int
     ): Flowable<News>
 }

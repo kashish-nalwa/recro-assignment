@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Recro Assignment</string>
+    <string name="text_anonymous">Anonymous</string>
+    <string name="text_samplet_title">Sample Title</string>
+    <string name="text_no_result_found">No results found!</string>
+    <string name="text_article_details">Article Details</string>
 </resources>

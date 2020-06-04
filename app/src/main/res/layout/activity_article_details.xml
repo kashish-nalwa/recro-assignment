@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.articleDetails.ArticleDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivArticle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toTopOf="@id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingEnd="@dimen/screen_padding"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/ivArticle"
+            tools:text="Scientists say they have found the cleanest air on earth - MSN" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_30dp"
+            android:layout_marginEnd="@dimen/screen_padding"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="Juli CloverJuli CloverJuli CloverJuli CloverJuli CloverJuli CloverJuli CloverJuli CloverJuli CloverJuli Clover" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginBottom="@dimen/dimen_30dp"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingEnd="@dimen/screen_padding"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthor"
+            app:layout_constraintVertical_bias="0"
+            tools:text="Image copyrightReutersImage caption\r\n A Hong Kong protester demonstrating against China's new law raises his British National Overseas passport\r\nBritain will change its immigration rules and offer mi… [+3240 chars]" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
