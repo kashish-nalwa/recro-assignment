@@ -1,4 +1,4 @@
-package com.android.recroassignment.network.main
+package com.android.recroassignment.network.articles
 
 import com.android.recroassignment.model.newslist.News
 import io.reactivex.Flowable

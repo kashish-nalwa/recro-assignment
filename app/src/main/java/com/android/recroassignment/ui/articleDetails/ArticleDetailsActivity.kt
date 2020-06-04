@@ -1,17 +1,11 @@
 package com.android.recroassignment.ui.articleDetails
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.android.recroassignment.R
 import com.android.recroassignment.model.newslist.Article
-import com.android.recroassignment.viewmodel.ViewModelProviderFactory
 import com.bumptech.glide.Glide
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_article_details.*
-import javax.inject.Inject
 
 class ArticleDetailsActivity : DaggerAppCompatActivity() {
 

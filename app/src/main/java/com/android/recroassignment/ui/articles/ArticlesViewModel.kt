@@ -1,10 +1,10 @@
 package com.android.recroassignment.ui.articles
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.android.recroassignment.Constants
 import com.android.recroassignment.model.newslist.Article
-import com.android.recroassignment.source.main.ArticlesRepository
+import com.android.recroassignment.source.articles.ArticlesRepository
+import com.android.recroassignment.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject

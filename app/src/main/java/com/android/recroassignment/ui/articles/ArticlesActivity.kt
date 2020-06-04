@@ -2,13 +2,13 @@ package com.android.recroassignment.ui.articles
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.recroassignment.R
 import com.android.recroassignment.model.newslist.Article
 import com.android.recroassignment.ui.articleDetails.ArticleDetailsActivity
+import com.android.recroassignment.util.Log
 import com.android.recroassignment.viewmodel.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_articles.*

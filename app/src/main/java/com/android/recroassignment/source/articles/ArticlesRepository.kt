@@ -1,16 +1,13 @@
-package com.android.recroassignment.source.main
+package com.android.recroassignment.source.articles
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import com.android.recroassignment.Constants
 import com.android.recroassignment.model.newslist.Article
 import com.android.recroassignment.model.newslist.News
-import com.android.recroassignment.network.main.MainApiInterface
+import com.android.recroassignment.network.articles.MainApiInterface
 import com.android.recroassignment.source.ArticlesDao
 import com.android.recroassignment.source.ArticlesDatabase
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 

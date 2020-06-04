@@ -1,8 +1,8 @@
 package com.android.recroassignment.di.articles
 
-import com.android.recroassignment.network.main.MainApiInterface
+import com.android.recroassignment.network.articles.MainApiInterface
 import com.android.recroassignment.source.ArticlesDatabase
-import com.android.recroassignment.source.main.ArticlesRepository
+import com.android.recroassignment.source.articles.ArticlesRepository
 import com.android.recroassignment.ui.articles.ArticleSelectionListener
 import com.android.recroassignment.ui.articles.ArticlesRecyclerAdapter
 import dagger.Module

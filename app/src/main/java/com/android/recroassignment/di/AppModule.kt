@@ -3,8 +3,6 @@ package com.android.recroassignment.di
 import com.android.recroassignment.BaseApplication
 import com.android.recroassignment.Constants
 import com.android.recroassignment.source.ArticlesDatabase
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
