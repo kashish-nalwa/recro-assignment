@@ -2,6 +2,7 @@ package com.android.recroassignment.ui.articles
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,8 +28,15 @@ class ArticlesActivity : DaggerAppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_articles)
+        setToolBar()
         initViewModel()
         initView()
+    }
+
+    private fun setToolBar() {
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.title = getString(R.string.app_name)
+        setSupportActionBar(toolbar)
     }
 
     private fun initView() {

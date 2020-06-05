@@ -1,6 +1,8 @@
 package com.android.recroassignment.ui.articleDetails
 
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import com.android.recroassignment.R
 import com.android.recroassignment.model.newslist.Article
 import com.bumptech.glide.Glide
@@ -19,7 +21,14 @@ class ArticleDetailsActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupActionBar() {
-        supportActionBar?.title = getString(R.string.text_article_details)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.title = getString(R.string.text_article_details)
+        toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_back)
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
